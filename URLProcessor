@@ -1,0 +1,33 @@
+package examples;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class URL {
+	
+	
+
+	public class URLProcessor {
+
+	    public static String extractPageName() {
+	        // Assuming that configs.driver.getCurrentUrl() returns the current URL
+	        String Title = "https://www.benefitssit2.ml.com/Login/User/ForgotUserID?n="; 
+
+	        Pattern pattern = Pattern.compile(".*/(.*?)(\\?.*)?$");
+	        Matcher matcher = pattern.matcher(Title);
+	        if (matcher.matches()) {
+	            String pageName = matcher.group(1);
+	            return pageName != null && !pageName.isEmpty() ? pageName : null;
+	        }
+	        return null;
+	    }
+	}
+
+
+	public static void main(String[] args) {
+		String pageName = URLProcessor.extractPageName();
+        System.out.println("Extracted Page Name: " + pageName);
+
+	}
+
+}
